@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { CodeRain } from "@/components/code-rain"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
-import { PoweredByBadge } from "@/components/powered-by-badge"
-import { ExpertiseSection } from "@/components/expertise-section"
-import { SpinningEarth } from "@/components/spinning-earth"
-import { TypingHero } from "@/components/typing-hero"
-import { motion } from "framer-motion"
-import { Zap } from "lucide-react"
-import { ProfileDropdown } from "@/components/profile-dropdown"
-import { ServicesViewportSection } from "@/components/services-viewport-section"
+import Link from "next/link";
+import { CodeRain } from "@/components/code-rain";
+import { NavBar } from "@/components/nav-bar";
+import { Footer } from "@/components/footer";
+import { PoweredByBadge } from "@/components/powered-by-badge";
+import { ExpertiseSection } from "@/components/expertise-section";
+import { SpinningEarth } from "@/components/spinning-earth";
+import { TypingHero } from "@/components/typing-hero";
+import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
+import { ProfileDropdown } from "@/components/profile-dropdown";
+import { ServicesViewportSection } from "@/components/services-viewport-section";
 
 export default function Home() {
   return (
@@ -40,7 +40,10 @@ export default function Home() {
             filter: "contrast(1.2) brightness(0.7) grayscale(100%)",
           }}
         >
-          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled%20video%20-%20Made%20with%20Clipchamp%20%283%29%20%281%29%20%282%29%20%282%29-i8U3zTcWrQss8nKM5ekseP7qFR5KVP.mp4" type="video/mp4" />
+          <source
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled%20video%20-%20Made%20with%20Clipchamp%20%283%29%20%281%29%20%282%29%20%282%29-i8U3zTcWrQss8nKM5ekseP7qFR5KVP.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -53,9 +56,7 @@ export default function Home() {
         {/* Hero section with better contrast */}
         <section className="flex flex-col items-center justify-center min-h-[90vh] px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <div className="mb-8">
-              <PoweredByBadge />
-            </div>
+            <div className="mb-8">{/* <PoweredByBadge /> */}</div>
 
             {/* Enhanced hero with better contrast */}
             <div className="relative">
@@ -72,8 +73,8 @@ export default function Home() {
             <div className="relative">
               <div className="absolute inset-0 bg-background/60 dark:bg-transparent rounded-xl blur-2xl"></div>
               <p className="relative z-10 text-muted-foreground max-w-xl mx-auto font-medium">
-                Transforming ideas into powerful digital solutions that drive growth and innovation for forward-thinking
-                businesses.
+                Transforming ideas into powerful digital solutions that drive
+                growth and innovation for forward-thinking businesses.
               </p>
             </div>
 
@@ -136,8 +137,8 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Let's discuss how we can transform your vision into reality with cutting-edge technology and strategic
-                innovation.
+                Let's discuss how we can transform your vision into reality with
+                cutting-edge technology and strategic innovation.
               </motion.p>
             </div>
 
@@ -184,19 +185,25 @@ export default function Home() {
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                       <span className="text-primary font-bold text-sm">1</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">No commitment required</p>
+                    <p className="text-sm text-muted-foreground">
+                      No commitment required
+                    </p>
                   </div>
                   <div className="flex flex-col items-center space-y-2">
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                       <span className="text-primary font-bold text-sm">2</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">30-minute strategy session</p>
+                    <p className="text-sm text-muted-foreground">
+                      30-minute strategy session
+                    </p>
                   </div>
                   <div className="flex flex-col items-center space-y-2">
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                       <span className="text-primary font-bold text-sm">3</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Expert guidance</p>
+                    <p className="text-sm text-muted-foreground">
+                      Expert guidance
+                    </p>
                   </div>
                 </div>
               </div>
@@ -207,5 +214,5 @@ export default function Home() {
         <Footer />
       </div>
     </main>
-  )
+  );
 }

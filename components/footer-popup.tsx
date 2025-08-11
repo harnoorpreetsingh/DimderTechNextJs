@@ -1,25 +1,40 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowUp, X, Mail, Phone, MapPin, ChevronDown, ChevronUp, ExternalLink } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowUp,
+  X,
+  Mail,
+  Phone,
+  MapPin,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+} from "lucide-react";
 
 export function FooterPopup() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [expandedSection, setExpandedSection] = useState<string | null>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const toggleSection = (sectionId: string) => {
-    setExpandedSection(expandedSection === sectionId ? null : sectionId)
-  }
+    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
 
   const sections = [
     {
       id: "services",
       title: "Services",
       items: [
-        { label: "Enterprise Web Development", href: "/services/web-development" },
+        {
+          label: "Enterprise Web Development",
+          href: "/services/web-development",
+        },
         { label: "Mobile App Development", href: "/services/mobile-apps" },
-        { label: "Physical Product Development", href: "/services/physical-products" },
+        {
+          label: "Physical Product Development",
+          href: "/services/physical-products",
+        },
         { label: "SEO Optimization", href: "/services/seo" },
         { label: "Google Ads Management", href: "/services/google-ads" },
         { label: "Patent Services", href: "/services/patents" },
@@ -61,13 +76,23 @@ export function FooterPopup() {
         { label: "System Status", href: "/status" },
       ],
     },
-  ]
+  ];
 
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "hello@weltivation.com", href: "mailto:hello@weltivation.com" },
-    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "hello@dimdertech.com",
+      href: "mailto:hello@dimdertech.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
+    },
     { icon: MapPin, label: "Location", value: "San Francisco, CA", href: "#" },
-  ]
+  ];
 
   return (
     <div className="relative">
@@ -106,9 +131,15 @@ export function FooterPopup() {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
                   <div className="flex items-center space-x-4">
-                    <img src="/images/weltivation-logo.png" alt="Weltivation" className="h-12" />
+                    <img
+                      src="/images/dimderTech_logo.png"
+                      alt="dimderTech"
+                      className="h-8"
+                    />
                     <div>
-                      <p className="text-sm text-muted-foreground">Ready to build the future together?</p>
+                      <p className="text-sm text-muted-foreground">
+                        Ready to build the future together?
+                      </p>
                     </div>
                   </div>
                   <button
@@ -123,13 +154,15 @@ export function FooterPopup() {
                 <div className="hidden md:grid md:grid-cols-4 gap-8 mb-8">
                   {sections.map((section) => (
                     <div key={section.id} className="space-y-4">
-                      <h4 className="font-semibold text-primary text-lg">{section.title}</h4>
+                      <h4 className="font-semibold text-primary text-lg">
+                        {section.title}
+                      </h4>
                       <div className="space-y-3">
                         {section.items.map((item, index) => (
                           <a
                             key={index}
                             href={item.href}
-                            className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1 hover:pl-2 group flex items-center"
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors py-1 hover:pl-2 group flex items-center"
                           >
                             <span>{item.label}</span>
                             <ExternalLink className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -143,12 +176,17 @@ export function FooterPopup() {
                 {/* Mobile: Collapsible sections */}
                 <div className="md:hidden space-y-2 mb-8">
                   {sections.map((section) => (
-                    <div key={section.id} className="bg-muted/10 rounded-lg overflow-hidden border border-border/30">
+                    <div
+                      key={section.id}
+                      className="bg-muted/10 rounded-lg overflow-hidden border border-border/30"
+                    >
                       <button
                         onClick={() => toggleSection(section.id)}
                         className="w-full flex items-center justify-between p-4 hover:bg-muted/20 transition-colors"
                       >
-                        <h4 className="font-semibold text-primary text-left">{section.title}</h4>
+                        <h4 className="font-semibold text-primary text-left">
+                          {section.title}
+                        </h4>
                         {expandedSection === section.id ? (
                           <ChevronUp className="w-4 h-4 flex-shrink-0" />
                         ) : (
@@ -170,7 +208,7 @@ export function FooterPopup() {
                                 <motion.a
                                   key={index}
                                   href={item.href}
-                                  className="block text-sm text-muted-foreground hover:text-primary transition-colors py-2 hover:pl-2 flex items-center group"
+                                  className="text-sm text-muted-foreground hover:text-primary transition-colors py-2 hover:pl-2 flex items-center group"
                                   initial={{ x: -10, opacity: 0 }}
                                   animate={{ x: 0, opacity: 1 }}
                                   transition={{ delay: index * 0.05 }}
@@ -195,7 +233,9 @@ export function FooterPopup() {
                         <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
                         <span>All systems operational</span>
                       </div>
-                      <span className="text-sm text-muted-foreground">© 2025 Weltivation. All rights reserved.</span>
+                      <span className="text-sm text-muted-foreground">
+                        © 2025 dimderTech. All rights reserved.
+                      </span>
                     </div>
 
                     <div className="flex flex-wrap justify-center lg:justify-end gap-6">
@@ -218,5 +258,5 @@ export function FooterPopup() {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

@@ -1,24 +1,31 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, ChevronUp, MessageSquare } from "lucide-react"
-import { NewsletterForm } from "./newsletter-form"
-import { FooterPopup } from "./footer-popup"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp, MessageSquare } from "lucide-react";
+import { NewsletterForm } from "./newsletter-form";
+import { FooterPopup } from "./footer-popup";
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null)
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const toggleSection = (sectionId: string) => {
-    setExpandedSection(expandedSection === sectionId ? null : sectionId)
-  }
+    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+  };
 
   const footerSections = [
     {
       id: "services",
       title: "Services",
-      items: ["Web Development", "Mobile Apps", "Physical Products", "SEO", "Google Ads", "Patent Services"],
+      items: [
+        "Web Development",
+        "Mobile Apps",
+        "Physical Products",
+        "SEO",
+        "Google Ads",
+        "Patent Services",
+      ],
     },
     {
       id: "company",
@@ -28,14 +35,28 @@ export function Footer() {
     {
       id: "resources",
       title: "Resources",
-      items: ["Documentation", "Support", "API", "Status", "Security", "Downloads"],
+      items: [
+        "Documentation",
+        "Support",
+        "API",
+        "Status",
+        "Security",
+        "Downloads",
+      ],
     },
     {
       id: "legal",
       title: "Legal",
-      items: ["Privacy", "Terms", "Cookies", "GDPR", "Accessibility", "Licenses"],
+      items: [
+        "Privacy",
+        "Terms",
+        "Cookies",
+        "GDPR",
+        "Accessibility",
+        "Licenses",
+      ],
     },
-  ]
+  ];
 
   return (
     <footer className="py-8 px-4 sm:px-6 border-t border-border/50 relative overflow-hidden">
@@ -68,13 +89,17 @@ export function Footer() {
         {/* Desktop Footer */}
         <div className="hidden md:flex flex-col sm:flex-row justify-between items-center gap-8">
           <div className="flex items-center space-x-4">
-            <img src="/images/weltivation-logo.png" alt="Weltivation" className="h-14" />
+            <img
+              src="/images/dimderTech_logo.png"
+              alt="dimderTech"
+              className="h-10"
+            />
             <FooterPopup />
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-8">
             <div className="text-muted-foreground text-xs">
-              &copy; {new Date().getFullYear()} Weltivation. All rights reserved.
+              &copy; {new Date().getFullYear()} dimderTech. All rights reserved.
             </div>
 
             <div className="flex items-center gap-4">
@@ -87,7 +112,9 @@ export function Footer() {
               </Button>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground">Subscribe to our newsletter</span>
+                <span className="text-xs text-muted-foreground">
+                  Subscribe to our newsletter
+                </span>
                 <NewsletterForm />
               </div>
             </div>
@@ -98,16 +125,23 @@ export function Footer() {
         <div className="md:hidden space-y-6">
           {/* Logo and main info */}
           <div className="text-center space-y-4">
-            <img src="/images/weltivation-logo.png" alt="Weltivation" className="h-12 mx-auto" />
+            <img
+              src="/images/dimderTech_logo.png"
+              alt="dimderTech"
+              className="h-8 mx-auto"
+            />
             <div className="text-muted-foreground text-xs">
-              &copy; {new Date().getFullYear()} Weltivation. All rights reserved.
+              &copy; {new Date().getFullYear()} dimderTech. All rights reserved.
             </div>
           </div>
 
           {/* Collapsible sections */}
           <div className="space-y-2">
             {footerSections.map((section) => (
-              <div key={section.id} className="border border-border/30 rounded-lg overflow-hidden">
+              <div
+                key={section.id}
+                className="border border-border/30 rounded-lg overflow-hidden"
+              >
                 <button
                   onClick={() => toggleSection(section.id)}
                   className="w-full flex items-center justify-between p-4 bg-background/50 hover:bg-muted/30 transition-colors"
@@ -166,5 +200,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

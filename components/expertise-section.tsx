@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import type { ReactElement } from "react"
-import { DashboardChart } from "@/components/dashboard-chart"
+import type { ReactElement } from "react";
+import { DashboardChart } from "@/components/dashboard-chart";
 
-import { useRef, useEffect, useState } from "react"
-import { motion, useInView } from "framer-motion"
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   ArrowUpRight,
   ChevronRight,
@@ -24,24 +24,24 @@ import {
   Package,
   Building2,
   Laptop,
-} from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export function ExpertiseSection(): ReactElement {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
-  const zeroOneRef = useRef(null)
-  const zeroOneInView = useInView(zeroOneRef, { once: true, amount: 0.5 })
-  const [showOne, setShowOne] = useState(false)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const zeroOneRef = useRef(null);
+  const zeroOneInView = useInView(zeroOneRef, { once: true, amount: 0.5 });
+  const [showOne, setShowOne] = useState(false);
 
   useEffect(() => {
     if (zeroOneInView) {
       const timer = setTimeout(() => {
-        setShowOne(true)
-      }, 1000)
-      return () => clearTimeout(timer)
+        setShowOne(true);
+      }, 1000);
+      return () => clearTimeout(timer);
     }
-  }, [zeroOneInView])
+  }, [zeroOneInView]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,7 +51,7 @@ export function ExpertiseSection(): ReactElement {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -62,10 +62,13 @@ export function ExpertiseSection(): ReactElement {
         duration: 0.5,
       },
     },
-  }
+  };
 
   return (
-    <section id="expertise" className="py-20 px-4 sm:px-6 relative overflow-hidden">
+    <section
+      id="expertise"
+      className="py-20 px-4 sm:px-6 relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -91,34 +94,46 @@ export function ExpertiseSection(): ReactElement {
                     1
                   </motion.span>
                 ) : (
-                  <motion.span initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                  <motion.span
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     0
                   </motion.span>
                 )}
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="lg:col-span-8 space-y-6">
+            <motion.div
+              variants={itemVariants}
+              className="lg:col-span-8 space-y-6"
+            >
               <div className="space-y-2">
                 <div className="flex items-center space-x-3">
-                  <h2 className="text-2xl font-bold">WELTIVATION™</h2>
+                  <h2 className="text-2xl font-bold">dimderTech™</h2>
                   <motion.div
                     className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-xs font-bold"
                     animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{
+                      duration: 2,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
                   >
                     99+
                   </motion.div>
                 </div>
-                <p className="text-primary text-sm">Trusted by industry leaders</p>
+                <p className="text-primary text-sm">
+                  Trusted by industry leaders
+                </p>
                 <div className="flex text-primary">
                   <span>★★★★★</span>
                 </div>
               </div>
 
               <h3 className="text-3xl sm:text-4xl font-bold leading-tight">
-                We help brands grow with strategic design that's thoughtful, visually bold, and built to make an
-                impression.
+                We help brands grow with strategic design that's thoughtful,
+                visually bold, and built to make an impression.
               </h3>
             </motion.div>
           </div>
@@ -142,7 +157,11 @@ export function ExpertiseSection(): ReactElement {
                     <p className="text-sm text-muted-foreground">Fact 01</p>
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                      transition={{
+                        duration: 3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "linear",
+                      }}
                     >
                       <Star className="w-4 h-4 text-primary" />
                     </motion.div>
@@ -150,14 +169,17 @@ export function ExpertiseSection(): ReactElement {
 
                   <ViewportTriggered45Percent />
 
-                  <p className="text-muted-foreground">of clients recommend us to other clients</p>
+                  <p className="text-muted-foreground">
+                    of clients recommend us to other clients
+                  </p>
 
                   {/* Enhanced testimonial section */}
                   <div className="pt-2 pb-4">
                     <div className="flex items-start space-x-2">
                       <ThumbsUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                       <p className="text-xs text-muted-foreground italic">
-                        "Their expertise in web development and business systems transformed our operations completely."
+                        "Their expertise in web development and business systems
+                        transformed our operations completely."
                       </p>
                     </div>
                   </div>
@@ -224,21 +246,32 @@ export function ExpertiseSection(): ReactElement {
                     playsInline
                     className="w-full h-full object-cover"
                     onLoadStart={(e) => {
-                      const video = e.target as HTMLVideoElement
+                      const video = e.target as HTMLVideoElement;
                       video.play().catch(() => {
-                        console.log("Video autoplay failed, user interaction required")
-                      })
+                        console.log(
+                          "Video autoplay failed, user interaction required"
+                        );
+                      });
                     }}
                   >
-                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4757%20%281%29.mp4-zuZGmYHOoQtajH4tuZKUVOr3qtbneV.mov" type="video/mp4" />
-                    <source src="/videos/glasspatch-demo.webm" type="video/webm" />
+                    <source
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4757%20%281%29.mp4-zuZGmYHOoQtajH4tuZKUVOr3qtbneV.mov"
+                      type="video/mp4"
+                    />
+                    <source
+                      src="/videos/glasspatch-demo.webm"
+                      type="video/webm"
+                    />
                   </video>
                   <div className="absolute inset-0 bg-black/50"></div>
                 </div>
 
                 <div className="relative z-10 p-6 h-full flex flex-col justify-between">
                   <div>
-                    <Badge variant="outline" className="bg-background/20 text-white border-white/20 mb-4">
+                    <Badge
+                      variant="outline"
+                      className="bg-background/20 text-white border-white/20 mb-4"
+                    >
                       GLASSPATCH
                     </Badge>
                   </div>
@@ -264,10 +297,13 @@ export function ExpertiseSection(): ReactElement {
               <div className="h-full rounded-lg border border-border bg-background/50 p-6 hover:border-primary/50 transition-all duration-300">
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold">A streamlined process, executed with methodical care.</h3>
+                    <h3 className="text-2xl font-bold">
+                      A streamlined process, executed with methodical care.
+                    </h3>
                     <p className="text-muted-foreground">
-                      We transform overwhelming brands into standout experiences, built to reflect the quality,
-                      ambition, and greatness
+                      We transform overwhelming brands into standout
+                      experiences, built to reflect the quality, ambition, and
+                      greatness
                     </p>
                   </div>
 
@@ -302,11 +338,19 @@ export function ExpertiseSection(): ReactElement {
                     <div>
                       <p className="text-sm text-muted-foreground">Fact 02</p>
                       <ViewportTriggeredCountUp />
-                      <p className="text-muted-foreground">Raised by the brands we've partnered with</p>
+                      <p className="text-muted-foreground">
+                        Raised by the brands we've partnered with
+                      </p>
                     </div>
                     <div className="flex items-center space-x-2 px-3 py-2 bg-background/50 backdrop-blur-sm border border-border/30 rounded-full self-start lg:self-center">
-                      <span className="text-xs text-muted-foreground">powered by</span>
-                      <img src="/images/weltivation-logo.png" alt="Weltivation" className="h-6" />
+                      <span className="text-xs text-muted-foreground">
+                        powered by
+                      </span>
+                      <img
+                        src="/images/weltivation-logo.png"
+                        alt="Weltivation"
+                        className="h-6"
+                      />
                     </div>
                   </div>
 
@@ -320,29 +364,29 @@ export function ExpertiseSection(): ReactElement {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 function ViewportTriggered45Percent(): ReactElement {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-  const [count, setCount] = useState(0)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (isInView) {
       const timer = setInterval(() => {
         setCount((prev) => {
           if (prev < 45) {
-            return prev + 1
+            return prev + 1;
           }
-          clearInterval(timer)
-          return 45
-        })
-      }, 50)
+          clearInterval(timer);
+          return 45;
+        });
+      }, 50);
 
-      return () => clearInterval(timer)
+      return () => clearInterval(timer);
     }
-  }, [isInView])
+  }, [isInView]);
 
   return (
     <div ref={ref} className="relative">
@@ -374,52 +418,52 @@ function ViewportTriggered45Percent(): ReactElement {
         }}
       />
     </div>
-  )
+  );
 }
 
 function ViewportTriggeredCountUp(): ReactElement {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-  const [count, setCount] = useState(0)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (isInView) {
       const timer = setInterval(() => {
         setCount((prev) => {
           if (prev < 12) {
-            return prev + 1
+            return prev + 1;
           }
-          clearInterval(timer)
-          return 12
-        })
-      }, 200)
+          clearInterval(timer);
+          return 12;
+        });
+      }, 200);
 
-      return () => clearInterval(timer)
+      return () => clearInterval(timer);
     }
-  }, [isInView])
+  }, [isInView]);
 
   return (
     <h3 ref={ref} className="text-5xl font-bold">
       ${count}M
     </h3>
-  )
+  );
 }
 
 function AnimatedTimelineChart(): ReactElement {
-  const [activeStage, setActiveStage] = useState(0)
+  const [activeStage, setActiveStage] = useState(0);
 
   const stages = [
     { name: "Discovery", duration: "1 Week", position: 20, color: "#6b7280" },
     { name: "Concept", duration: "2 Weeks", position: 50, color: "#6b7280" },
     { name: "Execution", duration: "3 Weeks", position: 80, color: "#6b7280" },
-  ]
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStage((prev) => (prev + 1) % stages.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
+      setActiveStage((prev) => (prev + 1) % stages.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative h-32 bg-gradient-to-r from-muted/10 to-muted/5 rounded-lg p-4">
@@ -438,7 +482,11 @@ function AnimatedTimelineChart(): ReactElement {
         <motion.div
           key={stage.name}
           className="absolute"
-          style={{ left: `${stage.position}%`, top: "50%", transform: "translate(-50%, -50%)" }}
+          style={{
+            left: `${stage.position}%`,
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.8 + index * 0.3, duration: 0.5 }}
@@ -456,7 +504,9 @@ function AnimatedTimelineChart(): ReactElement {
           <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-center">
             <motion.div
               className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors duration-500 ${
-                index <= activeStage ? "bg-primary text-primary-foreground" : "bg-muted/50 text-muted-foreground"
+                index <= activeStage
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted/50 text-muted-foreground"
               }`}
             >
               {stage.name}
@@ -465,12 +515,14 @@ function AnimatedTimelineChart(): ReactElement {
 
           {/* Duration label below */}
           <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
-            <span className="text-xs text-muted-foreground whitespace-nowrap">{stage.duration}</span>
+            <span className="text-xs text-muted-foreground whitespace-nowrap">
+              {stage.duration}
+            </span>
           </div>
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
 
 function CompanyLogoTicker(): ReactElement {
@@ -680,14 +732,14 @@ function CompanyLogoTicker(): ReactElement {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
 
 function ServiceSelectionCard(): ReactElement {
-  const [selectedService, setSelectedService] = useState<string | null>(null)
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [isCompleted, setIsCompleted] = useState(false)
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const services = [
     {
@@ -744,7 +796,7 @@ function ServiceSelectionCard(): ReactElement {
       borderColor: "border-cyan-500/30",
       textColor: "text-cyan-400",
     },
-  ]
+  ];
 
   const questions = [
     {
@@ -766,7 +818,12 @@ function ServiceSelectionCard(): ReactElement {
     {
       id: "goal",
       question: "What's your primary goal?",
-      options: ["Increase Revenue", "Improve Efficiency", "Scale Operations", "Digital Transformation"],
+      options: [
+        "Increase Revenue",
+        "Improve Efficiency",
+        "Scale Operations",
+        "Digital Transformation",
+      ],
     },
     {
       id: "budget",
@@ -795,42 +852,45 @@ function ServiceSelectionCard(): ReactElement {
       type: "input",
       placeholder: "Enter your email address",
     },
-  ]
+  ];
 
   const handleServiceSelect = (serviceId: string) => {
-    setSelectedService(serviceId)
-    setCurrentQuestion(0)
-    setAnswers({})
-    setIsCompleted(false)
-  }
+    setSelectedService(serviceId);
+    setCurrentQuestion(0);
+    setAnswers({});
+    setIsCompleted(false);
+  };
 
   const handleAnswerSelect = (answer: string) => {
-    const currentQuestionData = questions[currentQuestion]
-    const newAnswers = { ...answers, [currentQuestionData.id]: answer }
-    setAnswers(newAnswers)
+    const currentQuestionData = questions[currentQuestion];
+    const newAnswers = { ...answers, [currentQuestionData.id]: answer };
+    setAnswers(newAnswers);
 
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
+      setCurrentQuestion(currentQuestion + 1);
     } else {
-      setIsCompleted(true)
+      setIsCompleted(true);
       // Send email with inquiry details
-      sendInquiryEmail(newAnswers, selectedService)
+      sendInquiryEmail(newAnswers, selectedService);
     }
-  }
+  };
 
   const handleCustomAnswer = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const answer = formData.get("customAnswer") as string
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const answer = formData.get("customAnswer") as string;
 
     if (answer && answer.trim()) {
-      handleAnswerSelect(answer.trim())
+      handleAnswerSelect(answer.trim());
     }
-  }
+  };
 
-  const sendInquiryEmail = async (inquiryData: Record<string, string>, serviceType: string | null) => {
+  const sendInquiryEmail = async (
+    inquiryData: Record<string, string>,
+    serviceType: string | null
+  ) => {
     try {
-      const selectedServiceData = services.find((s) => s.id === serviceType)
+      const selectedServiceData = services.find((s) => s.id === serviceType);
       const emailBody = `
 New Consultation Inquiry
 
@@ -846,31 +906,33 @@ Contact Name: ${inquiryData.contactName || "Not provided"}
 Email: ${inquiryData.email || "Not provided"}
 
 Submitted at: ${new Date().toLocaleString()}
-    `
+    `;
 
       // This would typically be handled by a server endpoint
       // For now, we'll use mailto as a fallback
-      const mailtoLink = `mailto:andrdyer@gmail.com?subject=New Consultation Inquiry - ${selectedServiceData?.name}&body=${encodeURIComponent(emailBody)}`
-      window.open(mailtoLink)
+      const mailtoLink = `mailto:andrdyer@gmail.com?subject=New Consultation Inquiry - ${
+        selectedServiceData?.name
+      }&body=${encodeURIComponent(emailBody)}`;
+      window.open(mailtoLink);
     } catch (error) {
-      console.error("Error sending inquiry:", error)
+      console.error("Error sending inquiry:", error);
     }
-  }
+  };
 
   const handleBack = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1)
+      setCurrentQuestion(currentQuestion - 1);
     } else {
-      setSelectedService(null)
-      setCurrentQuestion(0)
-      setAnswers({})
-      setIsCompleted(false)
+      setSelectedService(null);
+      setCurrentQuestion(0);
+      setAnswers({});
+      setIsCompleted(false);
     }
-  }
+  };
 
   if (selectedService && !isCompleted) {
-    const selectedServiceData = services.find((s) => s.id === selectedService)
-    const currentQuestionData = questions[currentQuestion]
+    const selectedServiceData = services.find((s) => s.id === selectedService);
+    const currentQuestionData = questions[currentQuestion];
 
     return (
       <div className="h-full rounded-lg border border-border bg-black text-white overflow-hidden">
@@ -884,13 +946,18 @@ Submitted at: ${new Date().toLocaleString()}
                 {selectedServiceData?.icon}
               </div>
               <div>
-                <h3 className="text-lg font-semibold">{selectedServiceData?.name} Consultation</h3>
+                <h3 className="text-lg font-semibold">
+                  {selectedServiceData?.name} Consultation
+                </h3>
                 <p className="text-sm text-gray-400">
                   Step {currentQuestion + 1} of {questions.length}
                 </p>
               </div>
             </div>
-            <button onClick={handleBack} className="flex items-center text-gray-400 hover:text-white text-sm">
+            <button
+              onClick={handleBack}
+              className="flex items-center text-gray-400 hover:text-white text-sm"
+            >
               ← Back
             </button>
           </div>
@@ -898,7 +965,9 @@ Submitted at: ${new Date().toLocaleString()}
 
         {/* Question */}
         <div className="p-4">
-          <h2 className="text-xl font-semibold mb-6 text-center">{currentQuestionData.question}</h2>
+          <h2 className="text-xl font-semibold mb-6 text-center">
+            {currentQuestionData.question}
+          </h2>
 
           {currentQuestionData.type === "input" ? (
             <form onSubmit={handleCustomAnswer} className="space-y-4">
@@ -924,18 +993,22 @@ Submitted at: ${new Date().toLocaleString()}
                   onClick={() => handleAnswerSelect(option)}
                   className="p-3 border border-gray-700 rounded-lg hover:border-green-500 hover:bg-green-500/10 transition-all duration-200 text-left"
                 >
-                  <span className="text-green-400 font-medium text-sm">{option}</span>
+                  <span className="text-green-400 font-medium text-sm">
+                    {option}
+                  </span>
                 </button>
               ))}
             </div>
           )}
 
           <div className="mt-6 text-center">
-            <p className="text-gray-400 text-sm">{questions.length - currentQuestion - 1} questions remaining</p>
+            <p className="text-gray-400 text-sm">
+              {questions.length - currentQuestion - 1} questions remaining
+            </p>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (isCompleted) {
@@ -947,8 +1020,8 @@ Submitted at: ${new Date().toLocaleString()}
           </div>
           <h3 className="text-xl font-bold">Thank you!</h3>
           <p className="text-gray-400 text-sm">
-            Your inquiry has been sent to our team. We'll get back to you within 24 hours with a customized
-            consultation.
+            Your inquiry has been sent to our team. We'll get back to you within
+            24 hours with a customized consultation.
           </p>
           <div className="pt-4">
             <button
@@ -960,10 +1033,10 @@ Submitted at: ${new Date().toLocaleString()}
           </div>
           <button
             onClick={() => {
-              setSelectedService(null)
-              setCurrentQuestion(0)
-              setAnswers({})
-              setIsCompleted(false)
+              setSelectedService(null);
+              setCurrentQuestion(0);
+              setAnswers({});
+              setIsCompleted(false);
             }}
             className="mt-4 text-sm text-gray-400 hover:text-white"
           >
@@ -971,7 +1044,7 @@ Submitted at: ${new Date().toLocaleString()}
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -979,7 +1052,9 @@ Submitted at: ${new Date().toLocaleString()}
       <div className="space-y-4">
         <div>
           <h3 className="text-2xl font-bold mb-2">Select a Service</h3>
-          <p className="text-muted-foreground">Choose the service you're interested in to start a consultation</p>
+          <p className="text-muted-foreground">
+            Choose the service you're interested in to start a consultation
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -1036,5 +1111,5 @@ Submitted at: ${new Date().toLocaleString()}
         </div>
       </div>
     </div>
-  )
+  );
 }

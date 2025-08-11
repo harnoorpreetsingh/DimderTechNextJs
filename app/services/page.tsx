@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
+import { motion } from "framer-motion";
+import { NavBar } from "@/components/nav-bar";
+import { Footer } from "@/components/footer";
 import {
   Code,
   Smartphone,
@@ -14,10 +14,10 @@ import {
   Globe,
   ArrowRight,
   CheckCircle,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import {
   WebDevGraphic,
   MechanicalGraphic,
@@ -25,15 +25,21 @@ import {
   PatentGraphic,
   IoTGraphic,
   DigitalTransformationGraphic,
-} from "@/components/animated-service-graphics"
+} from "@/components/animated-service-graphics";
 
 export default function ServicesPage() {
   const services = [
     {
       icon: <Code className="w-8 h-8" />,
       title: "Web Development",
-      description: "Custom websites and web applications built with cutting-edge technologies",
-      features: ["React & Next.js", "Full-Stack Development", "API Integration", "Database Design"],
+      description:
+        "Custom websites and web applications built with cutting-edge technologies",
+      features: [
+        "React & Next.js",
+        "Full-Stack Development",
+        "API Integration",
+        "Database Design",
+      ],
       price: "Starting at $5,000",
       graphic: <WebDevGraphic />,
       color: "emerald",
@@ -41,8 +47,14 @@ export default function ServicesPage() {
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications for iOS and Android",
-      features: ["React Native", "iOS & Android", "App Store Deployment", "Push Notifications"],
+      description:
+        "Native and cross-platform mobile applications for iOS and Android",
+      features: [
+        "React Native",
+        "iOS & Android",
+        "App Store Deployment",
+        "Push Notifications",
+      ],
       price: "Starting at $8,000",
       graphic: <IoTGraphic />,
       color: "blue",
@@ -50,8 +62,14 @@ export default function ServicesPage() {
     {
       icon: <Search className="w-8 h-8" />,
       title: "SEO & Digital Marketing",
-      description: "Boost your online presence and drive organic traffic to your business",
-      features: ["SEO Optimization", "Content Strategy", "Analytics Setup", "Performance Tracking"],
+      description:
+        "Boost your online presence and drive organic traffic to your business",
+      features: [
+        "SEO Optimization",
+        "Content Strategy",
+        "Analytics Setup",
+        "Performance Tracking",
+      ],
       price: "Starting at $2,000/mo",
       graphic: <SEOGraphic />,
       color: "purple",
@@ -59,8 +77,14 @@ export default function ServicesPage() {
     {
       icon: <Palette className="w-8 h-8" />,
       title: "UI/UX Design",
-      description: "Beautiful, intuitive designs that convert visitors into customers",
-      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+      description:
+        "Beautiful, intuitive designs that convert visitors into customers",
+      features: [
+        "User Research",
+        "Wireframing",
+        "Prototyping",
+        "Design Systems",
+      ],
       price: "Starting at $3,000",
       graphic: <DigitalTransformationGraphic />,
       color: "pink",
@@ -69,7 +93,12 @@ export default function ServicesPage() {
       icon: <Cloud className="w-8 h-8" />,
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure and deployment solutions",
-      features: ["AWS/Vercel Setup", "CI/CD Pipelines", "Database Hosting", "Performance Monitoring"],
+      features: [
+        "AWS/Vercel Setup",
+        "CI/CD Pipelines",
+        "Database Hosting",
+        "Performance Monitoring",
+      ],
       price: "Starting at $1,500",
       graphic: <PatentGraphic />,
       color: "cyan",
@@ -77,13 +106,19 @@ export default function ServicesPage() {
     {
       icon: <ShoppingCart className="w-8 h-8" />,
       title: "E-commerce Development",
-      description: "Complete online stores with payment processing and inventory management",
-      features: ["Shopify/Custom", "Payment Integration", "Inventory Management", "Order Processing"],
+      description:
+        "Complete online stores with payment processing and inventory management",
+      features: [
+        "Shopify/Custom",
+        "Payment Integration",
+        "Inventory Management",
+        "Order Processing",
+      ],
       price: "Starting at $7,000",
       graphic: <MechanicalGraphic />,
       color: "orange",
     },
-  ]
+  ];
 
   const processSteps = [
     {
@@ -106,7 +141,7 @@ export default function ServicesPage() {
       title: "Launch & Support",
       description: "Go live with ongoing maintenance and support",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
@@ -121,7 +156,9 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <Badge className="bg-emerald-500 text-white mb-6">Our Services</Badge>
+            <Badge className="bg-emerald-500 text-white mb-6">
+              Our Services
+            </Badge>
             <h1 className="text-4xl sm:text-6xl font-bold mb-8 leading-tight">
               <span className="text-white">Transform Your </span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-400">
@@ -129,7 +166,8 @@ export default function ServicesPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-              From concept to launch, we deliver cutting-edge solutions that drive growth and exceed expectations
+              From concept to launch, we deliver cutting-edge solutions that
+              drive growth and exceed expectations
             </p>
           </motion.div>
 
@@ -148,13 +186,22 @@ export default function ServicesPage() {
                   {service.graphic}
 
                   <div className="relative z-10">
-                    <div className={`text-${service.color}-400 mb-6`}>{service.icon}</div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                    <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                    <div className={`text-${service.color}-400 mb-6`}>
+                      {service.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
 
                     <div className="space-y-2 mb-6">
                       {service.features.map((feature, i) => (
-                        <div key={i} className="flex items-center text-sm text-gray-300">
+                        <div
+                          key={i}
+                          className="flex items-center text-sm text-gray-300"
+                        >
                           <CheckCircle className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
                           {feature}
                         </div>
@@ -162,7 +209,11 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <div className={`text-${service.color}-400 font-bold text-lg`}>{service.price}</div>
+                      <div
+                        className={`text-${service.color}-400 font-bold text-lg`}
+                      >
+                        {service.price}
+                      </div>
                       <Link href="/consultation">
                         <Button
                           size="sm"
@@ -187,9 +238,12 @@ export default function ServicesPage() {
           >
             <div className="text-center mb-16">
               <Badge className="bg-blue-500 text-white mb-6">Our Process</Badge>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">How We Work</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                How We Work
+              </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                A proven process that ensures quality delivery and client satisfaction
+                A proven process that ensures quality delivery and client
+                satisfaction
               </p>
             </div>
 
@@ -205,7 +259,9 @@ export default function ServicesPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">
                     {step.step}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-400">{step.description}</p>
                 </motion.div>
               ))}
@@ -219,8 +275,12 @@ export default function ServicesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-3xl p-12 text-center"
           >
-            <h3 className="text-3xl font-bold text-black mb-4">Ready to Get Started?</h3>
-            <p className="text-black/80 text-xl mb-8">Let's discuss your project and bring your vision to life</p>
+            <h3 className="text-3xl font-bold text-black mb-4">
+              Ready to Get Started?
+            </h3>
+            <p className="text-black/80 text-xl mb-8">
+              Let's discuss your project and bring your vision to life
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/consultation">
                 <Button className="bg-black text-white hover:bg-gray-800 px-8 py-4 text-lg">
@@ -228,7 +288,7 @@ export default function ServicesPage() {
                   Free Consultation
                 </Button>
               </Link>
-              <Link href="/portfolio">
+              {/* <Link href="/portfolio">
                 <Button
                   variant="outline"
                   className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg"
@@ -236,7 +296,7 @@ export default function ServicesPage() {
                   <Globe className="w-5 h-5 mr-2" />
                   View Portfolio
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         </div>
@@ -244,5 +304,5 @@ export default function ServicesPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
