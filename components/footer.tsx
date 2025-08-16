@@ -59,7 +59,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="py-8 px-4 sm:px-6 border-t border-border/50 relative overflow-hidden">
+    <footer className="border-t border-border/50 relative overflow-hidden">
       {/* Code background */}
       <div className="absolute inset-0 opacity-5">
         <pre className="text-xs text-primary/30 font-mono leading-relaxed transform rotate-6 scale-150 absolute -top-20 -left-20">
@@ -85,19 +85,20 @@ export function Footer() {
         </pre>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="!w-full relative z-10">
         {/* Desktop Footer */}
         <div className="hidden md:flex flex-col sm:flex-row justify-between items-center gap-8">
-          <div className="flex items-center space-x-4">
+          {/* <div className="flex items-center space-x-4">
             <img
               src="/images/dimderTech_logo.png"
               alt="dimderTech"
               className="h-10"
             />
             <FooterPopup />
-          </div>
+            </div> */}
 
-          <div className="flex flex-col sm:flex-row items-center gap-8">
+          <FooterPopup />
+          {/* <div className="flex flex-col sm:flex-row items-center gap-8">
             <div className="text-muted-foreground text-xs">
               &copy; {new Date().getFullYear()} dimderTech. All rights reserved.
             </div>
@@ -111,14 +112,14 @@ export function Footer() {
                 Start Chat
               </Button>
 
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">
                   Subscribe to our newsletter
                 </span>
                 <NewsletterForm />
-              </div>
-            </div>
-          </div>
+              </div> */}
+          {/* </div>
+          </div> */}
         </div>
 
         {/* Mobile Footer - Stacked with collapsible sections */}
@@ -185,10 +186,10 @@ export function Footer() {
 
           {/* Newsletter signup and chat button */}
           <div className="text-center space-y-4 pt-4 border-t border-border/30">
-            <span className="text-sm text-muted-foreground">Stay updated</span>
+            {/* <span className="text-sm text-muted-foreground">Stay updated</span>
             <div className="px-4">
               <NewsletterForm />
-            </div>
+            </div> */}
             <Button
               onClick={() => (window.location.href = "/support")}
               className="w-full bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-medium px-4 py-2 text-sm"

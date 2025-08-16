@@ -26,7 +26,7 @@ export function NavBar() {
 
   const navItems = [
     { name: "Services", href: "/services" },
-    { name: t("nav.projects"), href: "/projects" },
+    // { name: t("nav.projects"), href: "/projects" },
     { name: t("nav.process"), href: "/process" },
     { name: t("nav.support"), href: "/support" },
     // {
@@ -89,7 +89,7 @@ export function NavBar() {
 
           {/* Right side items - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
-            <LanguageSelector />
+            {/* <LanguageSelector /> */}
             {/* <Link
               href="/corporate-login"
               onClick={scrollToTop}

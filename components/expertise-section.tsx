@@ -139,14 +139,14 @@ export function ExpertiseSection(): ReactElement {
           </div>
 
           {/* First row of cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: Enhanced Service Selection Interface */}
             <motion.div variants={itemVariants} className="group">
               <ServiceSelectionCard />
             </motion.div>
 
             {/* Card 2: Enhanced 45% stat with viewport trigger */}
-            <motion.div variants={itemVariants} className="group">
+            {/* <motion.div variants={itemVariants} className="group">
               <div className="h-full rounded-lg border border-border bg-background/50 p-6 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-6 right-6">
                   <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -174,7 +174,7 @@ export function ExpertiseSection(): ReactElement {
                   </p>
 
                   {/* Enhanced testimonial section */}
-                  <div className="pt-2 pb-4">
+            {/* <div className="pt-2 pb-4">
                     <div className="flex items-start space-x-2">
                       <ThumbsUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                       <p className="text-xs text-muted-foreground italic">
@@ -182,10 +182,10 @@ export function ExpertiseSection(): ReactElement {
                         transformed our operations completely."
                       </p>
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* Multi-row company ticker */}
-                  <div className="relative h-16 overflow-hidden bg-gradient-to-r from-muted/5 via-muted/10 to-muted/5 rounded-md border border-border/30">
+            {/* Multi-row company ticker */}
+            {/* <div className="relative h-16 overflow-hidden bg-gradient-to-r from-muted/5 via-muted/10 to-muted/5 rounded-md border border-border/30">
                     <CompanyLogoTicker />
                   </div>
 
@@ -229,10 +229,10 @@ export function ExpertiseSection(): ReactElement {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Card 3: GlassPatch with working video */}
-            <motion.div variants={itemVariants} className="group">
+            {/* <motion.div variants={itemVariants} className="group">
               <div className="h-full rounded-lg border border-border bg-background/50 overflow-hidden hover:border-primary/50 transition-all duration-300 relative">
                 <div className="absolute top-6 right-6 z-10">
                   <ArrowUpRight className="w-5 h-5 text-white group-hover:text-primary transition-colors" />
@@ -287,11 +287,11 @@ export function ExpertiseSection(): ReactElement {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </motion.div> */}
+            {/* </div> */}
 
-          {/* Second row of cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Second row of cards */}
+            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"> */}
             {/* Card 4: Animated Timeline Process */}
             <motion.div variants={itemVariants} className="group">
               <div className="h-full rounded-lg border border-border bg-background/50 p-6 hover:border-primary/50 transition-all duration-300">
@@ -327,7 +327,7 @@ export function ExpertiseSection(): ReactElement {
             </motion.div>
 
             {/* Card 5: Fixed $12M chart */}
-            <motion.div variants={itemVariants} className="group">
+            {/* <motion.div variants={itemVariants} className="group">
               <div className="h-full rounded-lg border border-border bg-background/50 p-6 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-6 right-6">
                   <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -359,7 +359,7 @@ export function ExpertiseSection(): ReactElement {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </motion.div>
       </div>
@@ -514,11 +514,11 @@ function AnimatedTimelineChart(): ReactElement {
           </div>
 
           {/* Duration label below */}
-          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
+          {/* <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
             <span className="text-xs text-muted-foreground whitespace-nowrap">
               {stage.duration}
             </span>
-          </div>
+          </div> */}
         </motion.div>
       ))}
     </div>
