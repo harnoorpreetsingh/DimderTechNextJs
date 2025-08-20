@@ -92,7 +92,7 @@ export default function Home() {
 
                 <Link
                   href="/support"
-                  className="group relative px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-medium text-base hover:from-emerald-400 hover:to-green-500 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(52,211,153,0.3)]"
+                  className="group relative px-6 py-3 bg-gradient-to-r to-[#34ABEA] from-[#055E8A] text-white rounded-lg font-medium text-base transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(52,171,234,0.4)]"
                 >
                   <span className="flex items-center space-x-2">
                     <Zap className="w-5 h-5" />
@@ -121,7 +121,7 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
               >
                 <span className="text-foreground">Ready to </span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-green-600">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#36b2f5] to-[#066a9c]">
                   innovate?
                 </span>
               </motion.h2>
@@ -161,7 +161,7 @@ export default function Home() {
 
                   <Link
                     href="/consultation"
-                    className="group relative px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-medium text-base hover:from-emerald-400 hover:to-green-500 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(52,211,153,0.3)]"
+                    className="group relative px-6 py-3 bg-gradient-to-r from-[#34ABEA] to-[#055E8A] text-white rounded-lg font-medium text-base hover:shadow-[0_0_20px_rgba(52,171,234,0.4)] transition-all duration-300 transform hover:scale-105"
                   >
                     <span className="flex items-center space-x-2">
                       <Zap className="w-5 h-5" />

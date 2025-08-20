@@ -156,12 +156,10 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <Badge className="bg-emerald-500 text-white mb-6">
-              Our Services
-            </Badge>
+            <Badge className="bg-primary text-white mb-6">Our Services</Badge>
             <h1 className="text-4xl sm:text-6xl font-bold mb-8 leading-tight">
               <span className="text-white">Transform Your </span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#38b5f9] to-[#0674aa]">
                 Digital Presence
               </span>
             </h1>
@@ -202,7 +200,7 @@ export default function ServicesPage() {
                           key={i}
                           className="flex items-center text-sm text-gray-300"
                         >
-                          <CheckCircle className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -217,7 +215,7 @@ export default function ServicesPage() {
                       <Link href="/consultation">
                         <Button
                           size="sm"
-                          className="bg-emerald-500 hover:bg-emerald-600 text-white group-hover:scale-105 transition-transform"
+                          className="bg-primary hover:opacity-90 text-white group-hover:scale-105 transition-transform"
                         >
                           Get Quote <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
@@ -273,7 +271,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-3xl p-12 text-center"
+            className="bg-gradient-to-r from-[#34ABEA] to-[#055E8A] rounded-3xl p-12 text-center"
           >
             <h3 className="text-3xl font-bold text-black mb-4">
               Ready to Get Started?

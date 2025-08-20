@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
-import { Send, Bot, User, ChevronDown, ChevronUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { NavBar } from "@/components/nav-bar";
+import { Footer } from "@/components/footer";
+import { Send, Bot, User, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Message = {
-  id: string
-  text: string
-  sender: "user" | "bot"
-  timestamp: Date
-}
+  id: string;
+  text: string;
+  sender: "user" | "bot";
+  timestamp: Date;
+};
 
 export default function SupportPage() {
   const [messages, setMessages] = useState<Message[]>([
@@ -22,9 +22,9 @@ export default function SupportPage() {
       sender: "bot",
       timestamp: new Date(),
     },
-  ])
-  const [inputMessage, setInputMessage] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   const faqs = [
     {
@@ -67,23 +67,23 @@ export default function SupportPage() {
       answer:
         "Yes, we can handle all aspects of hosting and domain management. We work with premium hosting providers and can set up everything from basic shared hosting to enterprise-level cloud infrastructure.",
     },
-  ]
+  ];
 
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const sendMessage = async () => {
-    if (!inputMessage.trim()) return
+    if (!inputMessage.trim()) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
       text: inputMessage,
       sender: "user",
       timestamp: new Date(),
-    }
+    };
 
-    setMessages((prev) => [...prev, userMessage])
-    setInputMessage("")
-    setIsTyping(true)
+    setMessages((prev) => [...prev, userMessage]);
+    setInputMessage("");
+    setIsTyping(true);
 
     // Simulate bot response
     setTimeout(() => {
@@ -92,33 +92,46 @@ export default function SupportPage() {
         text: getBotResponse(inputMessage),
         sender: "bot",
         timestamp: new Date(),
-      }
-      setMessages((prev) => [...prev, botMessage])
-      setIsTyping(false)
-    }, 1500)
-  }
+      };
+      setMessages((prev) => [...prev, botMessage]);
+      setIsTyping(false);
+    }, 1500);
+  };
 
   const getBotResponse = (message: string): string => {
-    const lowerMessage = message.toLowerCase()
+    const lowerMessage = message.toLowerCase();
 
-    if (lowerMessage.includes("price") || lowerMessage.includes("cost") || lowerMessage.includes("budget")) {
-      return "Our pricing varies based on project scope and complexity. For a detailed quote, I'd recommend booking a free consultation where we can discuss your specific needs. Would you like me to help you schedule one?"
+    if (
+      lowerMessage.includes("price") ||
+      lowerMessage.includes("cost") ||
+      lowerMessage.includes("budget")
+    ) {
+      return "Our pricing varies based on project scope and complexity. For a detailed quote, I'd recommend booking a free consultation where we can discuss your specific needs. Would you like me to help you schedule one?";
     }
 
-    if (lowerMessage.includes("timeline") || lowerMessage.includes("how long")) {
-      return "Project timelines depend on the complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 8-16 weeks. What type of project are you considering?"
+    if (
+      lowerMessage.includes("timeline") ||
+      lowerMessage.includes("how long")
+    ) {
+      return "Project timelines depend on the complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 8-16 weeks. What type of project are you considering?";
     }
 
-    if (lowerMessage.includes("consultation") || lowerMessage.includes("meeting")) {
-      return "I'd be happy to help you schedule a free consultation! You can book directly through our consultation page, or I can connect you with our team. What works better for you?"
+    if (
+      lowerMessage.includes("consultation") ||
+      lowerMessage.includes("meeting")
+    ) {
+      return "I'd be happy to help you schedule a free consultation! You can book directly through our consultation page, or I can connect you with our team. What works better for you?";
     }
 
-    if (lowerMessage.includes("support") || lowerMessage.includes("maintenance")) {
-      return "We offer comprehensive support packages including updates, security monitoring, and technical support starting at $299/month. Would you like to know more about our support options?"
+    if (
+      lowerMessage.includes("support") ||
+      lowerMessage.includes("maintenance")
+    ) {
+      return "We offer comprehensive support packages including updates, security monitoring, and technical support starting at $299/month. Would you like to know more about our support options?";
     }
 
-    return "That's a great question! I'd be happy to connect you with one of our specialists who can provide detailed information. Would you like me to schedule a call, or do you have any other questions I can help with right now?"
-  }
+    return "That's a great question! I'd be happy to connect you with one of our specialists who can provide detailed information. Would you like me to schedule a call, or do you have any other questions I can help with right now?";
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
@@ -127,22 +140,28 @@ export default function SupportPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20 mb-6">
-              <Bot className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-medium text-emerald-400">AI-Powered Support</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-primary/10 rounded-full border border-emerald-500/20 mb-6">
+              <Bot className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">
+                AI-Powered Support
+              </span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
               <span className="text-white">Get </span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#38b5f9] to-[#0674aa]">
                 Instant Help
               </span>
             </h1>
 
             <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-              Chat with our AI assistant for immediate support, or browse our comprehensive FAQ section for quick
-              answers.
+              Chat with our AI assistant for immediate support, or browse our
+              comprehensive FAQ section for quick answers.
             </p>
           </motion.div>
         </div>
@@ -164,10 +183,12 @@ export default function SupportPage() {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white">Support Assistant</h3>
+                  <h3 className="text-xl font-semibold text-white">
+                    Support Assistant
+                  </h3>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    <span className="text-sm text-emerald-400">Online</span>
+                    <span className="text-sm text-primary">Online</span>
                   </div>
                 </div>
               </div>
@@ -181,14 +202,22 @@ export default function SupportPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${
+                    message.sender === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
                   <div
-                    className={`flex items-start space-x-3 max-w-xs lg:max-w-md ${message.sender === "user" ? "flex-row-reverse space-x-reverse" : ""}`}
+                    className={`flex items-start space-x-3 max-w-xs lg:max-w-md ${
+                      message.sender === "user"
+                        ? "flex-row-reverse space-x-reverse"
+                        : ""
+                    }`}
                   >
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        message.sender === "user" ? "bg-blue-500" : "bg-gradient-to-r from-emerald-500 to-green-500"
+                        message.sender === "user"
+                          ? "bg-blue-500"
+                          : "bg-gradient-to-r from-[#38b5f9] to-[#0674aa]"
                       }`}
                     >
                       {message.sender === "user" ? (
@@ -199,7 +228,9 @@ export default function SupportPage() {
                     </div>
                     <div
                       className={`px-4 py-3 rounded-2xl ${
-                        message.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-700 text-gray-100"
+                        message.sender === "user"
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-700 text-gray-100"
                       }`}
                     >
                       <p className="text-sm leading-relaxed">{message.text}</p>
@@ -215,7 +246,7 @@ export default function SupportPage() {
                   className="flex justify-start"
                 >
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-r from-[#38b5f9] to-[#0674aa] rounded-full flex items-center justify-center">
                       <Bot className="w-4 h-4 text-white" />
                     </div>
                     <div className="bg-gray-700 px-4 py-3 rounded-2xl">
@@ -245,11 +276,11 @@ export default function SupportPage() {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && sendMessage()}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-emerald-500 focus:outline-none"
+                  className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-primary focus:outline-none"
                 />
                 <Button
                   onClick={sendMessage}
-                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 px-6 py-3 rounded-xl"
+                  className="bg-gradient-to-r from-[#38b5f9] to-[#0674aa] hover:opacity-80 px-6 py-3 rounded-xl"
                 >
                   <Send className="w-5 h-5" />
                 </Button>
@@ -268,8 +299,12 @@ export default function SupportPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-400">Quick answers to common questions about our services and process.</p>
+            <h2 className="text-3xl font-bold mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-400">
+              Quick answers to common questions about our services and process.
+            </p>
           </motion.div>
 
           <motion.div
@@ -302,7 +337,9 @@ export default function SupportPage() {
                     transition={{ duration: 0.3 }}
                     className="px-6 pb-4"
                   >
-                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </motion.div>
                 )}
               </div>
@@ -313,5 +350,5 @@ export default function SupportPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

@@ -5,9 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Monitor, Handshake, Zap } from "lucide-react";
+import {
+  Menu,
+  X,
+  // Monitor, Handshake,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LanguageSelector } from "@/components/language-selector";
+// import { LanguageSelector } from "@/components/language-selector";
 import { useLanguage } from "@/contexts/language-context";
 
 export function NavBar() {
@@ -77,7 +82,7 @@ export function NavBar() {
                 onClick={scrollToTop}
                 className={`flex items-center space-x-1 text-sm font-medium transition-colors duration-200 ${
                   pathname === item.href
-                    ? "text-emerald-400"
+                    ? "text-primary"
                     : "text-gray-300 hover:text-white"
                 }`}
               >
@@ -98,7 +103,7 @@ export function NavBar() {
               <Monitor className="w-5 h-5" />
             </Link> */}
             <Link href="/consultation" onClick={scrollToTop}>
-              <Button className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-medium">
+              <Button className="bg-gradient-to-r from-[#34ABEA] to-[#055E8A] hover:opacity-80 transition duration-300 text-white font-medium">
                 <Zap className="w-4 h-4 mr-2" />
                 Free Consultation
               </Button>
@@ -110,7 +115,7 @@ export function NavBar() {
             <Link href="/consultation" onClick={scrollToTop}>
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-medium text-xs px-3 py-2"
+                className="bg-gradient-to-r from-[#38b5f9] to-[#0674aa] hover:opacity-80 text-white font-medium text-xs px-3 py-2"
               >
                 <Zap className="w-3 h-3 mr-1" />
                 Free
