@@ -101,8 +101,8 @@ export default function ConsultationPage() {
       label: "Startup",
       description: "Early-stage innovation",
       icon: "🚀",
-      gradient: "from-emerald-500/20 to-green-500/20",
-      border: "border-emerald-500/30",
+      gradient: "from-primary/20 to-green-500/20",
+      border: "border-primary/30",
     },
     {
       id: "smb",
@@ -325,7 +325,7 @@ export default function ConsultationPage() {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
@@ -343,7 +343,7 @@ export default function ConsultationPage() {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-3"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium">
+              <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Strategic Consultation
               </div>
@@ -368,7 +368,7 @@ export default function ConsultationPage() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                       index <= currentStep
-                        ? "bg-emerald-500 text-white"
+                        ? "bg-primary text-white"
                         : "bg-gray-700 text-gray-400"
                     }`}
                   >
@@ -381,7 +381,7 @@ export default function ConsultationPage() {
                   {index < steps.length - 1 && (
                     <div className="flex-1 h-1 mx-2 bg-gray-700 rounded">
                       <div
-                        className={`h-full bg-emerald-500 rounded transition-all duration-500 ${
+                        className={`h-full bg-primary rounded transition-all duration-500 ${
                           index < currentStep ? "w-full" : "w-0"
                         }`}
                       />
@@ -407,7 +407,7 @@ export default function ConsultationPage() {
                   <div className="space-y-6">
                     <div className="text-center space-y-2">
                       <h2 className="text-2xl font-bold flex items-center justify-center">
-                        <Building className="w-6 h-6 mr-3 text-emerald-400" />
+                        <Building className="w-6 h-6 mr-3 text-primary" />
                         What type of business are you?
                       </h2>
                       <p className="text-gray-400">
@@ -444,7 +444,7 @@ export default function ConsultationPage() {
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="absolute top-2 right-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
+                              className="absolute top-2 right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center"
                             >
                               <CheckCircle className="w-3 h-3 text-white" />
                             </motion.div>
@@ -578,7 +578,7 @@ export default function ConsultationPage() {
                           }
                           className={`relative p-4 rounded-xl border-2 transition-all duration-300 text-center ${
                             consultationData.budget === budget.id
-                              ? "border-green-500 bg-gradient-to-br from-green-500/20 to-emerald-500/20 shadow-xl"
+                              ? "border-green-500 bg-gradient-to-br from-green-500/20 to-primary/20 shadow-xl"
                               : "border-gray-700/50 hover:border-gray-600 bg-gray-800/20"
                           }`}
                           whileHover={{ scale: 1.02 }}
@@ -716,7 +716,7 @@ export default function ConsultationPage() {
 
                     {/* Guest Mode Toggle */}
                     <div className="max-w-xl mx-auto mb-6">
-                      <div className="p-4 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-xl border border-emerald-500/20">
+                      <div className="p-4 bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-xl border border-primary/20">
                         <div className="flex items-center justify-between">
                           <div>
                             <h3 className="font-bold text-white">
@@ -729,7 +729,7 @@ export default function ConsultationPage() {
                           <button
                             onClick={() => setIsGuest(!isGuest)}
                             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                              isGuest ? "bg-emerald-500" : "bg-gray-600"
+                              isGuest ? "bg-primary" : "bg-gray-600"
                             }`}
                           >
                             <span
@@ -758,7 +758,7 @@ export default function ConsultationPage() {
                                   name: e.target.value,
                                 })
                               }
-                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-all"
+                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-primary focus:outline-none transition-all"
                               placeholder="Your full name"
                             />
                           </div>
@@ -776,7 +776,7 @@ export default function ConsultationPage() {
                                   email: e.target.value,
                                 })
                               }
-                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-all"
+                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-primary focus:outline-none transition-all"
                               placeholder="your@email.com"
                             />
                           </div>
@@ -794,7 +794,7 @@ export default function ConsultationPage() {
                                   company: e.target.value,
                                 })
                               }
-                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-all"
+                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-primary focus:outline-none transition-all"
                               placeholder="Your company"
                             />
                           </div>
@@ -812,7 +812,7 @@ export default function ConsultationPage() {
                                   phone: e.target.value,
                                 })
                               }
-                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-emerald-500 focus:outline-none transition-all"
+                              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-primary focus:outline-none transition-all"
                               placeholder="+1 (555) 123-4567"
                             />
                           </div>
@@ -822,8 +822,8 @@ export default function ConsultationPage() {
 
                     {isGuest && (
                       <div className="max-w-xl mx-auto">
-                        <div className="text-center p-6 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-xl border border-emerald-500/20">
-                          <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <div className="text-center p-6 bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-xl border border-primary/20">
+                          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
                             <Sparkles className="w-6 h-6 text-emerald-400" />
                           </div>
                           <h3 className="font-bold text-emerald-400 mb-2">
@@ -857,7 +857,7 @@ export default function ConsultationPage() {
             {currentStep < steps.length - 1 ? (
               <Button
                 onClick={nextStep}
-                className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white"
+                className="bg-gradient-to-r from-[#38b5f9] to-[#0674aa] hover:opacity-80 text-white"
               >
                 Next Step
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -865,7 +865,7 @@ export default function ConsultationPage() {
             ) : (
               <Button
                 onClick={handleSubmit}
-                className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white"
+                className="bg-gradient-to-r from-[#38b5f9] to-[#0674aa] hover:opacity-80 text-white"
               >
                 {isGuest ? "Preview Dashboard" : "Start Consultation"}
                 <ArrowRight className="w-4 h-4 ml-2" />
