@@ -29,7 +29,7 @@ import {
   Gauge,
   Activity,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 
 const services = [
   {
@@ -345,16 +345,18 @@ export function ServicesViewportSection() {
 
         <div className="relative">
           {/* Services Content */}
-          <div className="space-y-32">
+          <div className="lg:space-y-32">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
-                ref={(el) => (serviceRefs.current[index] = el)}
+                ref={(el) => {
+                  serviceRefs.current[index] = el;
+                }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className="min-h-[80vh] flex items-center"
+                className="min-h-[60vh] flex items-center"
               >
                 <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                   {/* Content */}
@@ -481,13 +483,25 @@ export function ServicesViewportSection() {
 
                   {/* Enhanced UI Graphics */}
                   <motion.div
-                    className={`${index % 2 === 1 ? "lg:order-1" : ""}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    className="max-lg:!hidden"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={{
+                      hidden: {},
+                      show: {
+                        transition: { staggerChildren: 0.15, ease: "easeOut" },
+                      },
+                    }}
                   >
-                    <ServiceUIGraphic service={service} index={index} />
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        show: { opacity: 1, y: 0 },
+                      }}
+                    >
+                      <ServiceUIGraphic service={service} index={index} />
+                    </motion.div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -524,13 +538,9 @@ function ServiceUIGraphic({ service, index }: { service: any; index: number }) {
     <div className="relative">
       {/* Background Glow */}
       <motion.div
-        className="absolute inset-0 bg-white/5 rounded-3xl blur-3xl"
-        animate={{ scale: [1, 1.05, 1] }}
-        transition={{
-          duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
+        className="absolute inset-0 bg-white/5 rounded-3xl"
+        animate={{ opacity: [0.6, 0.9, 0.6] }}
+        transition={{ duration: 4, repeat: Infinity }}
       />
 
       {/* Main UI Container */}
@@ -541,63 +551,103 @@ function ServiceUIGraphic({ service, index }: { service: any; index: number }) {
   );
 }
 
-function WebsiteUIGraphic({ service }: { service: any }) {
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
+export function WebsiteUIGraphic({ service }: { service: any }) {
   return (
-    <div className="space-y-6">
-      {/* Enhanced Browser Window */}
-      <div className="bg-gray-100 rounded-lg overflow-hidden shadow-xl">
+    <motion.div
+      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* Browser Window */}
+      <motion.div
+        className="bg-gray-100 rounded-lg overflow-hidden shadow-xl"
+        variants={item}
+      >
+        {/* Top bar */}
         <div className="flex items-center space-x-2 px-4 py-3 bg-gray-200">
-          <div className="w-3 h-3 bg-gray-500 rounded-full animate-pulse"></div>
-          <div
-            className="w-3 h-3 bg-gray-600 rounded-full animate-pulse"
-            style={{ animationDelay: "0.2s" }}
-          ></div>
-          <div
-            className="w-3 h-3 bg-gray-700 rounded-full animate-pulse"
-            style={{ animationDelay: "0.4s" }}
-          ></div>
+          <div className="w-3 h-3 bg-gray-500 rounded-full" />
+          <div className="w-3 h-3 bg-gray-600 rounded-full" />
+          <div className="w-3 h-3 bg-gray-700 rounded-full" />
           <div className="flex-1 bg-white rounded px-3 py-1 ml-4 shadow-inner">
             <span className="text-xs text-gray-600">
               https://yourwebsite.com
             </span>
           </div>
           <div className="flex space-x-1">
-            <div className="w-4 h-4 bg-gray-300 rounded hover:bg-gray-400 transition-colors"></div>
-            <div className="w-4 h-4 bg-gray-300 rounded hover:bg-gray-400 transition-colors"></div>
+            <div className="w-4 h-4 bg-gray-300 rounded" />
+            <div className="w-4 h-4 bg-gray-300 rounded" />
           </div>
         </div>
+
+        {/* Page Content */}
         <div className="p-6 bg-gradient-to-br from-white to-gray-50 min-h-[200px]">
-          <div className="space-y-4">
+          <motion.div
+            className="space-y-4"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
+            {/* Title shimmer → replaced with subtle fade */}
             <motion.div
               className="h-6 bg-gradient-to-r from-gray-700 to-gray-800 rounded w-3/4 shadow-sm"
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-            ></motion.div>
-            <div className="h-3 bg-gray-300 rounded w-full shadow-sm"></div>
-            <div className="h-3 bg-gray-300 rounded w-2/3 shadow-sm"></div>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              style={{ willChange: "opacity" }}
+            />
+
+            {/* Static placeholders (no infinite pulse) */}
+            <motion.div
+              className="h-3 bg-gray-300 rounded w-full shadow-sm"
+              variants={item}
+            />
+            <motion.div
+              className="h-3 bg-gray-300 rounded w-2/3 shadow-sm"
+              variants={item}
+            />
+
+            {/* Cards with hover animation only */}
             <div className="grid grid-cols-3 gap-4 mt-6">
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="h-16 bg-gradient-to-br from-gray-200 to-gray-100 rounded shadow-md hover:shadow-lg transition-shadow"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    delay: i * 0.3,
-                  }}
-                ></motion.div>
+                  className="h-16 bg-gradient-to-br from-gray-200 to-gray-100 rounded shadow-md"
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                  style={{ willChange: "transform" }}
+                  variants={item}
+                />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Enhanced Performance Metrics */}
+      {/* Performance Metrics */}
       <div className="grid grid-cols-2 gap-4">
+        {/* Speed Score */}
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          variants={item}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">
@@ -610,14 +660,20 @@ function WebsiteUIGraphic({ service }: { service: any }) {
             <motion.div
               className="bg-gradient-to-r from-gray-600 to-gray-700 h-2 rounded-full shadow-sm"
               initial={{ width: 0 }}
-              animate={{ width: "98%" }}
-              transition={{ duration: 2, ease: "easeOut" }}
-            ></motion.div>
+              whileInView={{ width: "98%" }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              style={{ willChange: "width" }}
+            />
           </div>
         </motion.div>
+
+        {/* Uptime */}
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          variants={item}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">Uptime</span>
@@ -628,21 +684,29 @@ function WebsiteUIGraphic({ service }: { service: any }) {
             <motion.div
               className="bg-gradient-to-r from-gray-600 to-gray-700 h-2 rounded-full shadow-sm"
               initial={{ width: 0 }}
-              animate={{ width: "99.9%" }}
-              transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-            ></motion.div>
+              whileInView={{ width: "99.9%" }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+              viewport={{ once: true }}
+              style={{ willChange: "width" }}
+            />
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function MobileUIGraphic({ service }: { service: any }) {
+export function MobileUIGraphic({ service }: { service: any }) {
   return (
-    <div className="flex justify-center items-center space-x-6">
-      {/* Enhanced Phone Mockup */}
-      <div className="relative">
+    <motion.div
+      className="flex justify-center items-center space-x-6"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* Phone Mockup */}
+      <motion.div variants={item} className="relative">
         <div className="w-48 h-80 bg-gray-900 rounded-3xl p-2 shadow-2xl">
           <div className="w-full h-full bg-white rounded-2xl overflow-hidden relative">
             {/* Status Bar */}
@@ -657,29 +721,32 @@ function MobileUIGraphic({ service }: { service: any }) {
 
             {/* App Content */}
             <div className="p-4 space-y-4">
+              {/* Title */}
               <motion.div
                 className="h-4 bg-gradient-to-r from-gray-700 to-gray-800 rounded w-3/4 shadow-sm"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              ></motion.div>
+                variants={item}
+              />
               <div className="space-y-2">
-                <div className="h-2 bg-gray-300 rounded w-full shadow-sm"></div>
-                <div className="h-2 bg-gray-300 rounded w-2/3 shadow-sm"></div>
+                <motion.div
+                  className="h-2 bg-gray-300 rounded w-full shadow-sm"
+                  variants={item}
+                />
+                <motion.div
+                  className="h-2 bg-gray-300 rounded w-2/3 shadow-sm"
+                  variants={item}
+                />
               </div>
 
-              {/* Interactive Cards */}
+              {/* Cards */}
               <div className="space-y-3 mt-6">
                 {[0, 1, 2].map((i) => (
                   <motion.div
                     key={i}
                     className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-100"
-                    animate={{ x: [0, 2, 0] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: i * 0.5,
-                    }}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, x: 3 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                    style={{ willChange: "transform" }}
+                    variants={item}
                   >
                     <div className="w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full shadow-sm"></div>
                     <div className="flex-1 space-y-1">
@@ -701,32 +768,27 @@ function MobileUIGraphic({ service }: { service: any }) {
                     className={`w-6 h-6 rounded ${
                       i === 1 ? "bg-gray-700" : "bg-gray-300"
                     } shadow-sm`}
-                    animate={i === 1 ? { scale: [1, 1.1, 1] } : {}}
-                    transition={{
-                      duration: 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  ></motion.div>
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    style={{ willChange: "transform" }}
+                  />
                 ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Enhanced App Features */}
-      <div className="space-y-4">
+      {/* App Features */}
+      <motion.div className="space-y-4" variants={container}>
         {service.features.slice(0, 3).map((feature: any, index: number) => (
           <motion.div
             key={index}
             className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-200 shadow-md"
-            animate={{ x: [0, 3, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: index * 0.3,
-            }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, x: 3 }}
+            transition={{ type: "spring", stiffness: 250, damping: 20 }}
+            style={{ willChange: "transform" }}
+            variants={item}
           >
             <div className="text-gray-600">{feature.icon}</div>
             <span className="text-sm text-gray-700 font-medium">
@@ -734,16 +796,25 @@ function MobileUIGraphic({ service }: { service: any }) {
             </span>
           </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
-function DigitalSystemsUIGraphic({ service }: { service: any }) {
+export function DigitalSystemsUIGraphic({ service }: { service: any }) {
   return (
-    <div className="space-y-6">
-      {/* Enhanced System Architecture */}
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg">
+    <motion.div
+      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* System Architecture */}
+      <motion.div
+        className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg"
+        variants={item}
+      >
         <div className="grid grid-cols-3 gap-4">
           {/* Data Sources */}
           <div className="space-y-3">
@@ -754,13 +825,10 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
               <motion.div
                 key={i}
                 className="h-8 bg-gradient-to-r from-gray-600 to-gray-700 rounded shadow-md flex items-center justify-center"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: i * 0.3,
-                }}
+                variants={item}
                 whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                style={{ willChange: "transform" }}
               >
                 <Database className="w-4 h-4 text-white" />
               </motion.div>
@@ -774,14 +842,21 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
             </h4>
             <motion.div
               className="h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded shadow-lg flex items-center justify-center"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-              whileHover={{ scale: 1.1 }}
+              variants={item}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20 }}
+              style={{ willChange: "transform" }}
             >
-              <Cog
-                className="w-8 h-8 text-white animate-spin"
-                style={{ animationDuration: "3s" }}
-              />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <Cog className="w-8 h-8 text-white" />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -794,13 +869,10 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
               <motion.div
                 key={i}
                 className="h-8 bg-gradient-to-r from-gray-600 to-gray-700 rounded shadow-md flex items-center justify-center"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: i * 0.3 + 1,
-                }}
+                variants={item}
                 whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                style={{ willChange: "transform" }}
               >
                 <Cloud className="w-4 h-4 text-white" />
               </motion.div>
@@ -810,30 +882,28 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
 
         {/* Data Flow Arrows */}
         <div className="flex justify-center items-center mt-4 space-x-4">
-          <motion.div
-            animate={{ x: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-          >
-            <ArrowRight className="w-5 h-5 text-gray-600" />
-          </motion.div>
-          <motion.div
-            animate={{ x: [0, 10, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: 0.5,
-            }}
-          >
-            <ArrowRight className="w-5 h-5 text-gray-600" />
-          </motion.div>
+          {[0, 1].map((i) => (
+            <motion.div
+              key={i}
+              variants={item}
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+              style={{ willChange: "transform" }}
+            >
+              <ArrowRight className="w-5 h-5 text-gray-600" />
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Enhanced Performance Dashboard */}
+      {/* Performance Dashboard */}
       <div className="grid grid-cols-2 gap-4">
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">
@@ -848,12 +918,16 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
               initial={{ width: 0 }}
               animate={{ width: "85%" }}
               transition={{ duration: 2, ease: "easeOut" }}
-            ></motion.div>
+            />
           </div>
         </motion.div>
+
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">
@@ -868,29 +942,46 @@ function DigitalSystemsUIGraphic({ service }: { service: any }) {
               initial={{ width: 0 }}
               animate={{ width: "95%" }}
               transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-            ></motion.div>
+            />
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function MechanicalUIGraphic({ service }: { service: any }) {
+export function MechanicalUIGraphic({ service }: { service: any }) {
   return (
-    <div className="space-y-6">
-      {/* Enhanced 3D Model Viewer */}
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg">
+    <motion.div
+      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* 3D Model Viewer */}
+      <motion.div
+        className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg"
+        variants={item}
+      >
         <div className="flex items-center justify-between mb-4">
           <h4 className="text-sm font-semibold text-gray-700">
             3D Model Viewer
           </h4>
           <div className="flex space-x-2">
-            <div className="w-3 h-3 bg-gray-500 rounded-full animate-pulse"></div>
-            <div
-              className="w-3 h-3 bg-gray-600 rounded-full animate-pulse"
-              style={{ animationDelay: "0.5s" }}
-            ></div>
+            {[0, 1].map((i) => (
+              <motion.div
+                key={i}
+                className="w-3 h-3 rounded-full"
+                style={{
+                  backgroundColor: i === 0 ? "#6B7280" : "#374151", // gray-500 / gray-600
+                  willChange: "opacity",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: i * 0.3, duration: 0.6 }}
+              />
+            ))}
           </div>
         </div>
 
@@ -898,17 +989,11 @@ function MechanicalUIGraphic({ service }: { service: any }) {
         <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg h-40 flex items-center justify-center relative overflow-hidden shadow-inner">
           <motion.div
             className="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg shadow-xl"
-            animate={{
-              rotateY: [0, 360],
-              rotateX: [0, 15, 0],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-            }}
+            animate={{ rotateY: 360 }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             style={{
               transformStyle: "preserve-3d",
+              willChange: "transform",
             }}
           >
             <div className="absolute inset-2 bg-gradient-to-br from-gray-500 to-gray-700 rounded shadow-inner"></div>
@@ -925,7 +1010,7 @@ function MechanicalUIGraphic({ service }: { service: any }) {
           </div>
         </div>
 
-        {/* Enhanced Controls */}
+        {/* Controls */}
         <div className="flex justify-between items-center mt-4">
           <div className="flex space-x-2">
             {["Rotate", "Zoom", "Pan"].map((tool, index) => (
@@ -938,6 +1023,7 @@ function MechanicalUIGraphic({ service }: { service: any }) {
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                variants={item}
               >
                 {tool}
               </motion.button>
@@ -945,13 +1031,16 @@ function MechanicalUIGraphic({ service }: { service: any }) {
           </div>
           <div className="text-xs text-gray-500">Precision: 0.01mm</div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Enhanced Specifications */}
+      {/* Specifications */}
       <div className="grid grid-cols-2 gap-4">
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">Tolerance</span>
@@ -960,9 +1049,13 @@ function MechanicalUIGraphic({ service }: { service: any }) {
           <div className="text-2xl font-bold text-gray-800">±0.01mm</div>
           <div className="text-xs text-gray-500 mt-1">Industry Leading</div>
         </motion.div>
+
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">Material</span>
@@ -972,15 +1065,24 @@ function MechanicalUIGraphic({ service }: { service: any }) {
           <div className="text-xs text-gray-500 mt-1">Grade 5</div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function ProductUIGraphic({ service }: { service: any }) {
+export function ProductUIGraphic({ service }: { service: any }) {
   return (
-    <div className="space-y-6">
-      {/* Enhanced Product Development Pipeline */}
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg">
+    <motion.div
+      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* Development Pipeline */}
+      <motion.div
+        className="bg-gray-50 rounded-lg p-6 border border-gray-200 shadow-lg"
+        variants={item}
+      >
         <h4 className="text-sm font-semibold text-gray-700 mb-4">
           Development Pipeline
         </h4>
@@ -989,9 +1091,7 @@ function ProductUIGraphic({ service }: { service: any }) {
             <motion.div
               key={stage}
               className="flex items-center space-x-4"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.3 }}
+              variants={item}
             >
               <motion.div
                 className={`w-8 h-8 rounded-full flex items-center justify-center shadow-md ${
@@ -999,21 +1099,19 @@ function ProductUIGraphic({ service }: { service: any }) {
                     ? "bg-gradient-to-r from-gray-600 to-gray-800 text-white"
                     : "bg-gray-300 text-gray-600"
                 }`}
-                animate={index <= 2 ? { scale: [1, 1.1, 1] } : {}}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: index * 0.5,
-                }}
+                whileHover={index <= 2 ? { scale: 1.1 } : {}}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ willChange: "transform" }}
               >
                 {index <= 2 ? (
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{
-                      duration: 2,
-                      repeat: Number.POSITIVE_INFINITY,
+                      duration: 6, // slower = less GPU drain
+                      repeat: Infinity,
                       ease: "linear",
                     }}
+                    style={{ willChange: "transform" }}
                   >
                     <Lightbulb className="w-4 h-4" />
                   </motion.div>
@@ -1038,23 +1136,26 @@ function ProductUIGraphic({ service }: { service: any }) {
                     initial={{ width: 0 }}
                     animate={{ width: index <= 2 ? "100%" : "60%" }}
                     transition={{
-                      duration: 1.5,
+                      duration: 1.2,
                       ease: "easeOut",
                       delay: index * 0.2,
                     }}
-                  ></motion.div>
+                  />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Enhanced Success Metrics */}
+      {/* Success Metrics */}
       <div className="grid grid-cols-2 gap-4">
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">
@@ -1068,13 +1169,17 @@ function ProductUIGraphic({ service }: { service: any }) {
               className="bg-gradient-to-r from-gray-600 to-gray-700 h-2 rounded-full shadow-sm"
               initial={{ width: 0 }}
               animate={{ width: "92%" }}
-              transition={{ duration: 2, ease: "easeOut" }}
-            ></motion.div>
+              transition={{ duration: 1.5, ease: "easeOut" }}
+            />
           </div>
         </motion.div>
+
         <motion.div
           className="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md"
+          variants={item}
           whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250, damping: 20 }}
+          style={{ willChange: "transform" }}
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-gray-600 font-medium">
@@ -1086,11 +1191,11 @@ function ProductUIGraphic({ service }: { service: any }) {
           <div className="text-xs text-gray-500 mt-1">Return on Investment</div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-function ArchitectureUIGraphic({ service }: { service: any }) {
+export function ArchitectureUIGraphic({ service }: { service: any }) {
   return (
     <div className="space-y-6">
       {/* Enhanced Blueprint Viewer */}
