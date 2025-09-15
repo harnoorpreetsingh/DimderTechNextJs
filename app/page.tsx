@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CodeRain } from "@/components/code-rain";
 import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
-import { PoweredByBadge } from "@/components/powered-by-badge";
+// import { PoweredByBadge } from "@/components/powered-by-badge";
 import { ExpertiseSection } from "@/components/expertise-section";
 import { SpinningEarth } from "@/components/spinning-earth";
 import { TypingHero } from "@/components/typing-hero";
