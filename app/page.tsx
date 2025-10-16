@@ -11,7 +11,7 @@ import { TypingHero } from "@/components/typing-hero";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { ProfileDropdown } from "@/components/profile-dropdown";
-import { ServicesViewportSection } from "@/components/services-viewport-section";
+import ServicesViewportSection from "@/components/services-viewport-section/index";
 
 export default function Home() {
   return (
